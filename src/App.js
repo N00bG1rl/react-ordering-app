@@ -1,8 +1,9 @@
-import { Fragment, useState } from "react"
+import { useState } from "react"
 
 import Header from "./components/Layout/Header"
 import Meals from "./components/Meals/Meals"
 import Cart from "./components/Cart/Cart"
+import CartProvider from "./store/CartProvider"
 
 function App() {
   // If we have two different state, we use state management
@@ -17,7 +18,8 @@ function App() {
   }
 
   return (
-    <Fragment>
+    /*  */
+    <CartProvider>
       {/* Render it, if its true */}
       {/* Point to cart.js throw props */}
       {cartIsShown && <Cart onCartClose={handleCartClose} />}
@@ -27,7 +29,7 @@ function App() {
       <main>
         <Meals />
       </main>
-    </Fragment>
+    </CartProvider>
   )
 }
 
