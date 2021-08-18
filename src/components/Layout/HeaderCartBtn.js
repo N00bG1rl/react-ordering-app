@@ -4,7 +4,8 @@ import styles from "./HeaderCartBtn.module.css"
 
 const HeaderCartBtn = props => {
   return (
-    <button className={styles.button}>
+    /* onClick here is build in and uses header.js name choice */
+    <button className={styles.button} onClick={props.onClick}>
       <span className={styles.icon}>
         <CartIcon />
       </span>

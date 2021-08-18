@@ -10,7 +10,8 @@ const Header = props => {
     <Fragment>
       <header className={styles.header}>
         <h1>CandyShop</h1>
-        <HeaderCartBtn />
+        {/* App.js pointer. onClick is our choice */}
+        <HeaderCartBtn onClick={props.onCartShow} />
       </header>
       <div className={styles["main-image"]}>
         <img src={mainImage} alt='Pink Doughnut with candy sprinkles.' />

@@ -6,7 +6,7 @@ import styles from "./Modal.module.css"
 
 // Component functions - Both gets props because they get data
 const Backdrop = props => {
-  return <div className={styles.backdrop} />
+  return <div className={styles.backdrop} onClick={props.onCartClose} />
 }
 
 const ModalOverlay = props => {
@@ -24,7 +24,10 @@ const Modal = props => {
   return (
     <Fragment>
       {/* Use portals for cleaner html result. Portal need second arg - where to */}
-      {ReactDOM.createPortal(<Backdrop />, portalElement)}
+      {ReactDOM.createPortal(
+        <Backdrop onCartClose={props.onCartClose} />,
+        portalElement
+      )}
       {ReactDOM.createPortal(
         <ModalOverlay>{props.children}</ModalOverlay>,
         portalElement
