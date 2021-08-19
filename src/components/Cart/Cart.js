@@ -1,12 +1,35 @@
-import Modal from "../UI/Modal"
+import { useContext } from 'react'
 
-import styles from "./Cart.module.css"
+import Modal from '../UI/Modal'
+import CartItem from './CartItem'
+import CartContext from '../../store/cart-context'
+
+import styles from './Cart.module.css'
 
 const Cart = props => {
+  const cartCtx = useContext(CartContext)
+
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`
+  // Check if there is items in bag
+  const hasItems = cartCtx.items.length > 0
+
+  // Add and remove items from card
+  const handleCartItemAdd = item => {}
+
+  const handleCartItemRemove = id => {}
+
   const cartItems = (
-    <ul className={styles["cart-items"]}>
-      {[{ id: "c1", name: "Candy", amount: "2", price: 12.5 }].map(item => (
-        <li>{item.name}</li>
+    <ul className={styles['cart-items']}>
+      {cartCtx.items.map(item => (
+        <CartItem
+          key={item.id}
+          name={item.name}
+          amount={item.amount}
+          price={item.price}
+          /* Bind ensures that added or removed id-s.... 145 */
+          onAdd={handleCartItemAdd.bind(null, item)}
+          onRemove={handleCartItemRemove.bind(null, item.id)}
+        />
       ))}
     </ul>
   )
@@ -16,13 +39,14 @@ const Cart = props => {
       {cartItems}
       <div className={styles.total}>
         <span>Total Amount</span>
-        <span>12.50</span>
+        <span>{totalAmount}</span>
       </div>
       <div className={styles.actions}>
-        <button className={styles["button--alt"]} onClick={props.onCartClose}>
+        <button className={styles['button--alt']} onClick={props.onCartClose}>
           Close
         </button>
-        <button className={styles.button}>Order</button>
+        {/* Render order btn only when there is items in bag */}
+        {hasItems && <button className={styles.button}>Order</button>}
       </div>
     </Modal>
   )
