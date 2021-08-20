@@ -13,10 +13,15 @@ const Cart = props => {
   // Check if there is items in bag
   const hasItems = cartCtx.items.length > 0
 
-  // Add and remove items from card
-  const handleCartItemAdd = item => {}
+  // Add items to card at overlay
+  const handleCartItemAdd = item => {
+    cartCtx.addItem({ ...item, amount: 1 })
+  }
 
-  const handleCartItemRemove = id => {}
+  // Remove items from card at overlay
+  const handleCartItemRemove = id => {
+    cartCtx.removeItem(id)
+  }
 
   const cartItems = (
     <ul className={styles['cart-items']}>

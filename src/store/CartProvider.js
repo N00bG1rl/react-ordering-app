@@ -46,6 +46,49 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     }
   }
+
+  if (action.type === 'REMOVE_CART_ITEM') {
+    // Find index of existing item
+    const existingCartItemIndex = state.items.findIndex(
+      item => item.id === action.id
+    )
+
+    // Get the item
+    const existingCartItem = state.items[existingCartItemIndex]
+
+    // Update amount
+    const updatedTotalAmount = state.totalAmount - existingCartItem.price
+    let updatedItems
+
+    // Check if item is last one and remove it then from array
+    // Otherwise decrease the amount
+    if (existingCartItem.amount === 1) {
+      // Filter will return new array where deleted item is not in array anymore
+      // Filter out items that is not with that item id and they are kept
+      //
+      updatedItems = state.items.filter(item => item.id !== action.id)
+    } else {
+      // If amount is creater than 1 we want to keep item, just
+      // change the amount count
+      const updatedItem = {
+        // Get existing array
+        ...existingCartItem,
+        // And then remove 1
+        amount: existingCartItem.amount - 1,
+      }
+      // Copy of stated items
+      updatedItems = [...state.items]
+      // Override with index
+      updatedItems[existingCartItemIndex] = updatedItem
+    }
+
+    // Return new state object
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    }
+  }
+
   return defaultCartState
 }
 
