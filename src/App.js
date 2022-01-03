@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import Header from "./components/Layout/Header"
-import Meals from "./components/Meals/Meals"
-import Cart from "./components/Cart/Cart"
-import CartProvider from "./store/CartProvider"
+import Header from './components/Layout/Header'
+import Orders from './components/Orders/Orders'
+import Cart from './components/Cart/Cart'
+import CartProvider from './store/CartProvider'
 
 function App() {
   // If we have two different state, we use state management
@@ -27,7 +27,7 @@ function App() {
       down to header throw props. Also could use Contex. */}
       <Header onCartShow={handleCartShow} />
       <main>
-        <Meals />
+        <Orders />
       </main>
     </CartProvider>
   )

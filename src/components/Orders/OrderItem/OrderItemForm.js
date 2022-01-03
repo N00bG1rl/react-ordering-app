@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 
 import Input from '../../UI/Input'
 
-import styles from './MealItemForm.module.css'
+import styles from './OrderItemForm.module.css'
 
 const MealItemForm = props => {
   // Check if added cart amount is valid

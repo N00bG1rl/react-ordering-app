@@ -1,9 +1,9 @@
-import { Fragment } from "react"
+import { Fragment } from 'react'
 
-import HeaderCartBtn from "./HeaderCartBtn"
+import HeaderCartBtn from './HeaderCartBtn'
 
-import mainImage from "../../assets/main.jpg"
-import styles from "./Header.module.css"
+//import mainImage from "../../assets/main.jpg"
+import styles from './Header.module.css'
 
 const Header = props => {
   return (
@@ -13,9 +13,7 @@ const Header = props => {
         {/* App.js pointer. onClick is our choice */}
         <HeaderCartBtn onClick={props.onCartShow} />
       </header>
-      <div className={styles["main-image"]}>
-        <img src={mainImage} alt='Pink Doughnut with candy sprinkles.' />
-      </div>
+      <div className={styles['main-image']}></div>
     </Fragment>
   )
 }
