@@ -1,15 +1,19 @@
-.meals {
+.orders {
   max-width: 60rem;
   width: 90%;
   margin: 2rem auto;
-  animation: meals-appear 1s ease-out forwards;
+  animation: orders-appear 1s ease-out forwards;
 }
-.meals ul {
+.loading {
+  text-align: center;
+  color: #faf6f6;
+}
+.orders ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-@keyframes meals-appear {
+@keyframes orders-appear {
   from {
     opacity: 0;
     transform: translateY(3rem);

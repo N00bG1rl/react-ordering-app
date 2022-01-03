@@ -1,8 +1,7 @@
-import { createDomStream } from "htmlparser2"
-import { Fragment } from "react"
-import ReactDOM from "react-dom"
+import { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 
-import styles from "./Modal.module.css"
+import styles from './Modal.module.css'
 
 // Component functions - Both gets props because they get data
 const Backdrop = props => {
@@ -17,7 +16,7 @@ const ModalOverlay = props => {
   )
 }
 
-const portalElement = document.getElementById("overlays")
+const portalElement = document.getElementById('overlays')
 
 // Main component withch is exported
 const Modal = props => {
