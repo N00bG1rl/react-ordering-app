@@ -8,6 +8,10 @@ August 18, 2021
 
 # Project is created with
 
-* React.js
-* HTML
-* CSS
+- React.js - React Hooks
+- HTML
+- CSS
+
+# View as image
+
+![github](public/github.png)
