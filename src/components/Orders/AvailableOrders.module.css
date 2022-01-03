@@ -6,7 +6,11 @@
 }
 .loading {
   text-align: center;
-  color: #faf6f6;
+  color: #1a1618;
+}
+.loadingError {
+  text-align: center;
+  color: red;
 }
 .orders ul {
   list-style: none;

@@ -11,6 +11,8 @@ const AvailableMeals = () => {
   const [products, setProducts] = useState([])
   // Handling the loading state
   const [isLoading, setIsLoading] = useState(true)
+  // Handle errors
+  const [httpError, setHttpError] = useState()
 
   // useEffect last arg is dependencys array, if it is empty, useEffect
   // only runs once, when content is first loaded
@@ -22,6 +24,13 @@ const AvailableMeals = () => {
       const response = await fetch(
         'https://react-custom-hooks-d9dd9-default-rtdb.europe-west1.firebasedatabase.app/orders.json'
       )
+
+      // Check if there is no response from server
+      if (!response.ok) {
+        // try/catch is getting this message
+        throw new Error('Something went wrong.')
+      }
+
       // Gives back object, but we want an array
       const responseData = await response.json()
       // Helper variable to create array
@@ -42,14 +51,27 @@ const AvailableMeals = () => {
       setIsLoading(false)
     }
 
-    // Now we can execute fetch as part of useEffect
-    fetchProducts()
+    // We need to add try/catch to catch errors, but since we are inside useEffect,
+    // we use another work around
+    fetchProducts().catch(error => {
+      setIsLoading(false)
+      setHttpError(error.message)
+    })
   }, [])
 
   if (isLoading) {
     return (
       <section className={styles.loading}>
         <p>Loading...</p>
+      </section>
+    )
+  }
+
+  // Show error message
+  if (httpError) {
+    return (
+      <section className={styles.loadingError}>
+        <p>{httpError}</p>
       </section>
     )
   }
