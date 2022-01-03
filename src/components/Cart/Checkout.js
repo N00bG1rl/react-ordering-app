@@ -58,8 +58,15 @@ const Checkout = props => {
     if (!formIsValid) {
       return
     }
-    // Proceed if all input fields returns true
-    // Submit the cart data
+
+    // Proceed if all input fields returns true, submit the cart data
+    // onConfirm is from Cart.js, pass the userData with props
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      postal: enteredPostal,
+      city: enteredCity,
+    })
   }
 
   // Refactor styles from form

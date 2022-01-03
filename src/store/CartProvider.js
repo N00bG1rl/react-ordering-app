@@ -65,7 +65,6 @@ const cartReducer = (state, action) => {
     if (existingCartItem.amount === 1) {
       // Filter will return new array where deleted item is not in array anymore
       // Filter out items that is not with that item id and they are kept
-      //
       updatedItems = state.items.filter(item => item.id !== action.id)
     } else {
       // If amount is creater than 1 we want to keep item, just
@@ -87,6 +86,10 @@ const cartReducer = (state, action) => {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
     }
+  }
+
+  if (action.type === 'CLEAR') {
+    return defaultCartState
   }
 
   return defaultCartState
@@ -114,11 +117,17 @@ const CartProvider = props => {
     dispatchCartAction({ type: 'REMOVE_CART_ITEM', id: id })
   }
 
+  // Remove cart items after order submit
+  const handleCartClear = () => {
+    dispatchCartAction({ type: 'CLEAR' })
+  }
+
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: handleAddItemToCart,
     removeItem: handleRemoveItemFromCart,
+    clearCart: handleCartClear,
   }
 
   return (
