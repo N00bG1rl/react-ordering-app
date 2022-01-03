@@ -8,7 +8,7 @@ import styles from './OrderItem.module.css'
 const MealItem = props => {
   const cartCtx = useContext(CartContext)
   // Helper constant (with template literal?) for formating to two decimals
-  const price = `$${props.price.toFixed(2)}`
+  const price = `$${props.price}`
 
   const handleAddToCart = amount => {
     cartCtx.addItem({

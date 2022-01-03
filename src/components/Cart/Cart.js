@@ -41,7 +41,7 @@ const Cart = props => {
     // Wait for fetch
     // Todo: error handling
     await fetch(
-      'https://react-custom-hooks-d9dd9-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
+      'https://react-custom-hooks-d9dd9-default-rtdb.europe-west1.firebasedatabase.app/data.json',
       {
         method: 'POST',
         body: JSON.stringify({
@@ -105,7 +105,9 @@ const Cart = props => {
       {!isCheckout && modalActions}
     </Fragment>
   )
+
   const isSubmittingModalContent = <p>Sending order data...</p>
+
   const didSubmitModalContent = (
     <Fragment>
       <p>Order was successful.</p>
