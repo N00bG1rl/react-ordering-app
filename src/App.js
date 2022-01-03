@@ -18,7 +18,6 @@ function App() {
   }
 
   return (
-    /*  */
     <CartProvider>
       {/* Render it, if its true */}
       {/* Point to cart.js throw props */}

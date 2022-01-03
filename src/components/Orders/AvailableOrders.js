@@ -3,42 +3,42 @@ import MealItem from './OrderItem/OrderItem'
 
 import styles from './AvailableOrders.module.css'
 
-const DUMMY_CANDY = [
+const DUMMY_ORDER = [
   {
     id: 'm1',
-    name: 'Sushi',
+    name: 'Order 1',
     description: 'Finest fish and veggies',
     price: 22.99,
   },
   {
     id: 'm2',
-    name: 'Schnitzel',
+    name: 'Order 2',
     description: 'A german specialty!',
     price: 16.5,
   },
   {
     id: 'm3',
-    name: 'Barbecue Burger',
+    name: 'Order 3',
     description: 'American, raw, meaty',
     price: 12.99,
   },
   {
     id: 'm4',
-    name: 'Green Bowl',
+    name: 'Order 4',
     description: 'Healthy...and green...',
     price: 18.99,
   },
 ]
 
 const AvailableMeals = () => {
-  // Helper constant
-  const candyList = DUMMY_CANDY.map(candy => (
+  // Helper function
+  const orderList = DUMMY_ORDER.map(order => (
     <MealItem
-      id={candy.id}
-      key={candy.id}
-      name={candy.name}
-      description={candy.description}
-      price={candy.price}
+      id={order.id}
+      key={order.id}
+      name={order.name}
+      description={order.description}
+      price={order.price}
     />
   ))
 
@@ -46,7 +46,7 @@ const AvailableMeals = () => {
   return (
     <section className={styles.meals}>
       <Card>
-        <ul>{candyList}</ul>
+        <ul>{orderList}</ul>
       </Card>
     </section>
   )
