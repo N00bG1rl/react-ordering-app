@@ -1,8 +1,7 @@
 import styles from './CartItem.module.css'
 
 const CartItem = props => {
-  // toFixed forces to have allways two decimals
-  const price = `$${props.price.toFixed(2)}`
+  const price = `€${props.price.toFixed(2)}`
 
   return (
     <li className={styles['cart-item']}>

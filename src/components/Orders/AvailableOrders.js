@@ -6,34 +6,24 @@ import OrderItem from './OrderItem/OrderItem'
 import styles from './AvailableOrders.module.css'
 
 const AvailableProducts = () => {
-  // Initially there is no data, but when it is loaded we need to update state
-  // so we need to use useState aswell
   const [products, setProducts] = useState([])
   // Handling the loading state
   const [isLoading, setIsLoading] = useState(true)
-  // Handle errors
+  // Handle errors state
   const [httpError, setHttpError] = useState()
 
-  // useEffect last arg is dependencys array, if it is empty, useEffect
-  // only runs once, when content is first loaded
   useEffect(() => {
-    // useEfect should not return promise, but we can use cleanup function,
-    // a work around, where we can still use async/await
     const fetchProducts = async () => {
-      // fetch returns promise, since it is asyncronos task
       const response = await fetch(
         'https://react-custom-hooks-d9dd9-default-rtdb.europe-west1.firebasedatabase.app/orders.json'
       )
 
       // Check if there is no response from server
       if (!response.ok) {
-        // try/catch is getting this message
         throw new Error('Something went wrong.')
       }
 
-      // Gives back object, but we want an array
       const responseData = await response.json()
-      // Helper variable to create array
       const loadedProducts = []
 
       // Loop through object and push new objects into loadedProducts array
@@ -46,13 +36,10 @@ const AvailableProducts = () => {
         })
       }
 
-      // Call/update state and pass on loadedProducts
       setProducts(loadedProducts)
       setIsLoading(false)
     }
 
-    // We need to add try/catch to catch errors, but since we are inside useEffect,
-    // we use another work around
     fetchProducts().catch(error => {
       setIsLoading(false)
       setHttpError(error.message)
@@ -76,8 +63,6 @@ const AvailableProducts = () => {
     )
   }
 
-  // Helper function
-  // products from state
   const orderList = products.map(order => (
     <OrderItem
       id={order.id}
@@ -88,7 +73,6 @@ const AvailableProducts = () => {
     />
   ))
 
-  // Return some jsx code
   return (
     <section className={styles.orders}>
       <Card>

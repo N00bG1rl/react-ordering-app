@@ -4,8 +4,8 @@ import Input from '../../UI/Input'
 
 import styles from './OrderItemForm.module.css'
 
-const MealItemForm = props => {
-  // Check if added cart amount is valid
+const OrderItemForm = props => {
+  // Check if added amount is valid
   const [amountIsValid, setAmountIsValid] = useState(true)
 
   const amountInputRef = useRef()
@@ -31,7 +31,6 @@ const MealItemForm = props => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <Input
-        /* In custom component with ref we also need to change Input.js */
         ref={amountInputRef}
         label='Amount'
         input={{
@@ -49,4 +48,4 @@ const MealItemForm = props => {
   )
 }
 
-export default MealItemForm
+export default OrderItemForm

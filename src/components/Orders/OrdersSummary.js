@@ -1,6 +1,6 @@
 import styles from './OrdersSummary.module.css'
 
-const MealsSummary = () => {
+const OrdersSummary = () => {
   return (
     <section className={styles.summary}>
       <h2>Best stuff delivered to you!</h2>
@@ -14,4 +14,4 @@ const MealsSummary = () => {
   )
 }
 
-export default MealsSummary
+export default OrdersSummary

@@ -3,17 +3,14 @@
   height: 19rem;
   overflow: auto;
 }
-
 .control {
   margin-bottom: 0.5rem;
 }
-
 .control label {
   font-weight: bold;
   margin-bottom: 0.25rem;
   display: block;
 }
-
 .control input {
   font: inherit;
   border: 1px solid #faf6f6;
@@ -21,13 +18,11 @@
   width: 20rem;
   max-width: 100%;
 }
-
 .actions {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
-
 .actions button {
   font: inherit;
   color: #1a1618;
@@ -38,28 +33,23 @@
   padding: 0.5rem 2rem;
   border: 1px solid #1a1618;
 }
-
 .actions button:hover,
 .actions button:active {
   background-color: #1a1618;
   border-color: #1a1618;
   color: #faf6f6;
 }
-
 .actions .submit {
   background-color: #1a1618;
   color: #faf6f6;
 }
-
 .actions .submit:hover,
 .actions .submit:active {
   background-color: #1a1618;
 }
-
 .invalid label {
   color: red;
 }
-
 .invalid input {
   border-color: red;
   background-color: #faf6f6;

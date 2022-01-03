@@ -1,11 +1,11 @@
-.meal {
+.order {
   display: flex;
   justify-content: space-between;
   margin: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #faf6f6;
 }
-.meal h3 {
+.order h3 {
   margin: 0 0 0.25rem 0;
   color: #1a1618;
 }
