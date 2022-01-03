@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
 import Card from '../UI/Card'
-import MealItem from './OrderItem/OrderItem'
+import OrderItem from './OrderItem/OrderItem'
 
 import styles from './AvailableOrders.module.css'
 
-const AvailableMeals = () => {
+const AvailableProducts = () => {
   // Initially there is no data, but when it is loaded we need to update state
   // so we need to use useState aswell
   const [products, setProducts] = useState([])
@@ -79,7 +79,7 @@ const AvailableMeals = () => {
   // Helper function
   // products from state
   const orderList = products.map(order => (
-    <MealItem
+    <OrderItem
       id={order.id}
       key={order.id}
       name={order.name}
@@ -98,4 +98,4 @@ const AvailableMeals = () => {
   )
 }
 
-export default AvailableMeals
+export default AvailableProducts
