@@ -62,44 +62,37 @@ const Checkout = props => {
     // Submit the cart data
   }
 
-  // Refactor from form
-  const formNameStyles = `${styles.control}  ${
-    formInputsValidity.name ? '' : styles.invalid
-  }`
-  const formStreetStyles = `${styles.control}  ${
-    formInputsValidity.street ? '' : styles.invalid
-  }`
-  const formPostalStyles = `${styles.control}  ${
-    formInputsValidity.postal ? '' : styles.invalid
-  }`
-  const formCityStyles = `${styles.control}  ${
-    formInputsValidity.city ? '' : styles.invalid
-  }`
+  // Refactor styles from form
+  const formStyles = formInputField => {
+    return `${styles.control} ${
+      formInputsValidity[formInputField] ? '' : styles.invalid
+    }`
+  }
 
   return (
     <form className={styles.form} onSubmit={handleConfirm}>
-      <div className={formNameStyles}>
+      <div className={formStyles('name')}>
         <label htmlFor='name'>Your Name</label>
         {/* Connect useRef with input field */}
         <input type='text' id='name' ref={nameInputRef} />
         {!formInputsValidity.name && <p>Please enter a name.</p>}
       </div>
-      <div className={formStreetStyles}>
+      <div className={formStyles('street')}>
         <label htmlFor='street'>Street</label>
         <input type='text' id='street' ref={streetInputRef} />
         {!formInputsValidity.street && <p>Please enter a street.</p>}
       </div>
-      <div className={formPostalStyles}>
+      <div className={formStyles('postal')}>
         <label htmlFor='postal'>Postal</label>
         <input type='text' id='postal' ref={postalInputRef} />
         {!formInputsValidity.postal && (
           <p>Please enter a correct postal code.</p>
         )}
       </div>
-      <div className={formCityStyles}>
+      <div className={formStyles('city')}>
         <label htmlFor='city'>City</label>
         <input type='text' id='city' ref={cityInputRef} />
-        {!formInputsValidity.city && <p>Please enter a valid name.</p>}
+        {!formInputsValidity.city && <p>Please enter a city.</p>}
       </div>
       <div className={styles.actions}>
         {/* Type added because it would not submit form */}
