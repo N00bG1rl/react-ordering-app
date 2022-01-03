@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import styles from './Modal.module.css'
 
-// Component functions - Both gets props because they get data
+// Component functions - Both gets props because they get data (from app.js)
 const Backdrop = props => {
   return <div className={styles.backdrop} onClick={props.onCartClose} />
 }

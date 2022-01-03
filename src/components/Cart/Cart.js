@@ -1,12 +1,15 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 import Modal from '../UI/Modal'
 import CartItem from './CartItem'
 import CartContext from '../../store/cart-context'
+import Checkout from './Checkout'
 
 import styles from './Cart.module.css'
 
 const Cart = props => {
+  // Set state for order button
+  const [isCheckout, setIsCheckOut] = useState(false)
   const cartCtx = useContext(CartContext)
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`
@@ -21,6 +24,11 @@ const Cart = props => {
   // Remove items from card at overlay
   const handleCartItemRemove = id => {
     cartCtx.removeItem(id)
+  }
+
+  // Set state for order button
+  const handleOrder = () => {
+    setIsCheckOut(true)
   }
 
   const cartItems = (
@@ -39,20 +47,34 @@ const Cart = props => {
     </ul>
   )
 
+  // Refactor from main modal
+  const modalActions = (
+    <div className={styles.actions}>
+      {/* { props.onCartClose comes from app.js through props } */}
+      <button className={styles['button--alt']} onClick={props.onCartClose}>
+        Close
+      </button>
+      {/* Render order btn only when there is items in bag */}
+      {hasItems && (
+        <button className={styles.button} onClick={handleOrder}>
+          Order
+        </button>
+      )}
+    </div>
+  )
+
   return (
+    /* props.onCartClose comes from app.js through props */
     <Modal onCartClose={props.onCartClose}>
       {cartItems}
       <div className={styles.total}>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      <div className={styles.actions}>
-        <button className={styles['button--alt']} onClick={props.onCartClose}>
-          Close
-        </button>
-        {/* Render order btn only when there is items in bag */}
-        {hasItems && <button className={styles.button}>Order</button>}
-      </div>
+      {/* If checkout is true,show */}
+      {/* Get event onCancel from Checkout.js and use app.js handleCartClose */}
+      {isCheckout && <Checkout onCancel={props.onCartClose} />}
+      {!isCheckout && modalActions}
     </Modal>
   )
 }
